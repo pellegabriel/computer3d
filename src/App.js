@@ -115,8 +115,17 @@ export default function App() {
           maxPolarAngle={Math.PI / 2.2}
         />
       </Canvas>
-      <ButtonLink url="https://polvorin01.netlify.app/" text="Go to Profile" position={[0, -1, 5]} />
-
+      <div className="button-container">
+        <ButtonLink 
+          url="https://polvorin01.netlify.app/" 
+          text="Go to Profile"
+        />
+        <ButtonLink 
+          url="/cv.pdf" 
+          text="Download CV" 
+          style={{ animationDelay: '0.07s' }}
+        />
+      </div>
     </>
   );
 }

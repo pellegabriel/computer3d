@@ -1,15 +1,13 @@
 import React from 'react';
-import './ButtonLink.css'; // Asegúrate de crear y usar este archivo CSS
+import './ButtonLink.css';
 
-function ButtonLink({ url, text, position }) {
+function ButtonLink({ url, text, style }) {
   return (
-    <div className='button' position={position}>
-      <a href={url} target="_blank" rel="noopener noreferrer" className="bouncy">
-        <button className="bouncy-button">
-          {text}
-        </button>
-      </a>
-    </div>
+    <a href={url} target="_blank" rel="noopener noreferrer" className="bouncy" style={style}>
+      <button className="bouncy-button">
+        {text}
+      </button>
+    </a>
   );
 }
 
