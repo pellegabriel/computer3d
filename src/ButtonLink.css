@@ -1,0 +1,39 @@
+.bouncy {
+  animation: bouncy 5s infinite linear;
+  position: relative;
+}
+
+.bouncy-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid white; 
+  background-color: transparent; 
+  transition: background-color 0.3s; 
+  color: aliceblue;
+}
+
+.bouncy-button:hover {
+  background-color: white;
+  color: black; 
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes bouncy {
+  0% { top: 0em; }
+  40% { top: 0em; }
+  43% { top: -0.9em; }
+  46% { top: 0em; }
+  48% { top: -0.4em; }
+  50% { top: 0em; }
+  100% { top: 0em; }
+}

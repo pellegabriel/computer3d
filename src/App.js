@@ -9,11 +9,14 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 import HeroPage from "./HeroPage";
-
+import { Can } from "./Can";
+import { Lamp } from "./Lamp";
+import { Plant } from "./Plant";
+import ButtonLink from './ButtonLink';
 function Model(props) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/mac-draco.glb");
-  materials.aluminium.metalness = 2.5; 
+  materials.aluminium.metalness = 2.5;
   materials.aluminium.roughness = 0.2;
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -92,21 +95,28 @@ function Model(props) {
 
 export default function App() {
   return (
-    <Canvas camera={{ position: [15, 10, -15], fov: 55 }}>
-      <pointLight position={[10, 10, 10]} intensity={1.5} />
-      <Suspense fallback={null}>
-        <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
-          <Model />
-        </group>
-        <Environment preset="city" />
-      </Suspense>
-      <ContactShadows position={[0, -3.9, 0]} scale={20} blur={1.5} far={5} />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={true}
-        minPolarAngle={Math.PI / 2.2}
-        maxPolarAngle={Math.PI / 2.2}
-      />
-    </Canvas>
+    <>
+      <Canvas camera={{ position: [0, 10, -10], fov: 55 }}>
+        <pointLight position={[10, 10, 10]} intensity={1.5} />
+        <Suspense fallback={null}>
+          <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
+            <Lamp />
+            <Model />
+            <Plant />
+            <Can />
+          </group>
+          <Environment preset="city" />
+        </Suspense>
+        <ContactShadows position={[0, -3.9, 0]} scale={20} blur={1.5} far={5} />
+        <OrbitControls
+          enablePan={true}
+          enableZoom={true}
+          minPolarAngle={Math.PI / 2.2}
+          maxPolarAngle={Math.PI / 2.2}
+        />
+      </Canvas>
+      <ButtonLink url="https://polvorin01.netlify.app/" text="Go to Profile" position={[0, -1, 5]} />
+
+    </>
   );
 }
