@@ -17,8 +17,8 @@ main,
 body {
   font-family: inter;
   color: black;
-  background: #4860cb;
-  height: 100vh;
+background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 25%, rgba(72,96,203,1) 100%);
 }
 
 .content {
