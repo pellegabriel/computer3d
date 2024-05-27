@@ -9,13 +9,13 @@ import {
 } from "@react-three/drei";
 import Page from "./components/page/Page";
 import { Can } from "./components/models/Can";
-import ButtonLink from './components/page/ButtonLink';
 import { Apartments } from "./components/models/Apartment";
 import { Revolver } from "./components/models/Revolver";
 import { Mask } from "./components/models/Mask";
 import { Katana } from "./components/models/Katana";
 import { SetGranades } from "./components/models/SetGranades";
 import { GunBot } from "./components/models/Gun-bot";
+import CybrButtons from "./components/page/CybrButtons";
 
 function Model(props) {
   const group = useRef();
@@ -83,7 +83,7 @@ const Loader = () => (
 
 export default function App() {
   return (
-    <>
+    <div style={{borderWidth: '5px', height: '100%', borderColor: '#DF0B55'}}>
       <Canvas camera={{ position: [0, 10, -10], fov: 55 }}>
         <Suspense fallback={<Loader />}>
           <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
@@ -110,17 +110,7 @@ export default function App() {
           maxDistance={80} // Distancia máxima de alejamiento
         />
       </Canvas>
-      <div className="button-container">
-        <ButtonLink 
-          url="https://polvorin01.netlify.app/" 
-          text="Go to Profile"
-        />
-        <ButtonLink 
-          url="/cv.pdf" 
-          text="Download CV" 
-          style={{ animationDelay: '0.07s' }}
-        />
-      </div>
-    </>
+              <CybrButtons/>
+    </div>
   );
 }
