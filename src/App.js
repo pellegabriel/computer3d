@@ -7,14 +7,14 @@ import {
   ContactShadows,
   OrbitControls,
 } from "@react-three/drei";
-import HeroPage from "./HeroPage";
-import { Can } from "./Can";
-import ButtonLink from './ButtonLink';
-import { Apartments } from "./Apartment";
-import { Revolver } from "./Revolver";
-import { Mask } from "./Mask";
-import { Katana } from "./Katana";
-import { SetGranades } from "./SetGranades";
+import Page from "./components/page/Page";
+import { Can } from "./components/models/Can";
+import ButtonLink from './components/page/ButtonLink';
+import { Apartments } from "./components/models/Apartment";
+import { Revolver } from "./components/models/Revolver";
+import { Mask } from "./components/models/Mask";
+import { Katana } from "./components/models/Katana";
+import { SetGranades } from "./components/models/SetGranades";
 
 function Model(props) {
   const group = useRef();
@@ -44,7 +44,7 @@ function Model(props) {
               <div
                 className="wrapper"
                 onPointerDown={(e) => e.stopPropagation()}>
-                <HeroPage />
+                <Page />
               </div>
             </Html>
           </mesh>

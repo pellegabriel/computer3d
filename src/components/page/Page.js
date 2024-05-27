@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HeroPage() {
+export default function Page() {
   return (
     <div
       className="relative bg-gray-50"
