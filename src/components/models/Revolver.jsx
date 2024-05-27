@@ -14,7 +14,7 @@ export function Revolver(props) {
   const { nodes, materials } = useGLTF('/revolver.glb')
   return (
     <group {...props} dispose={null}>
-      <group scale={0.003} position={[-3, -2, 8]} rotation={[-Math.PI / 2, -0.1, 0.5]}>
+      <group scale={0.0016} position={[-5, -1.75, 5]} rotation={[-Math.PI / 2.2, 0, 0.8]}>
         <group position={[-100.103, -2.734, 6.041]} rotation={[-Math.PI / 2, 0, 0]} scale={154.783}>
           <mesh geometry={nodes.gun_main_0.geometry} material={materials.main} />
           <mesh geometry={nodes.gun_cable_0.geometry} material={materials.cable} />

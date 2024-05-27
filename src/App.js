@@ -15,6 +15,7 @@ import { Revolver } from "./components/models/Revolver";
 import { Mask } from "./components/models/Mask";
 import { Katana } from "./components/models/Katana";
 import { SetGranades } from "./components/models/SetGranades";
+import { GunBot } from "./components/models/Gun-bot";
 
 function Model(props) {
   const group = useRef();
@@ -88,6 +89,7 @@ export default function App() {
           <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
             <Model /> 
             <Can />
+            <GunBot/>
             <Apartments />
             <Revolver/>
             <SetGranades/>
@@ -97,7 +99,7 @@ export default function App() {
           <Environment preset="city" />
         </Suspense>
         <ContactShadows position={[0, -3.9, 0]} scale={20} blur={1.5} far={5} />
-        <OrbitControls
+      <OrbitControls
           enablePan={true}
           enableZoom={true}
           minPolarAngle={Math.PI / 2.2}
