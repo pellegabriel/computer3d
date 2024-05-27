@@ -13,7 +13,6 @@ import { Apartments } from "./components/models/Apartment";
 import { Revolver } from "./components/models/Revolver";
 import { Mask } from "./components/models/Mask";
 import { Katana } from "./components/models/Katana";
-import { SetGranades } from "./components/models/SetGranades";
 import { GunBot } from "./components/models/Gun-bot";
 import CybrButtons from "./components/page/CybrButtons";
 
@@ -92,7 +91,6 @@ export default function App() {
             <GunBot/>
             <Apartments />
             <Revolver/>
-            <SetGranades/>
             <Mask/>
             <Katana/>
           </group>
