@@ -73,11 +73,18 @@ function Model(props) {
     </group>
   );
 }
+
+const Loader = () => (
+  <Html center>
+    <div className="loading">Loading...</div>
+  </Html>
+);
+
 export default function App() {
   return (
     <>
       <Canvas camera={{ position: [0, 10, -10], fov: 55 }}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
             <Model /> 
             <Can />
@@ -90,7 +97,7 @@ export default function App() {
           <Environment preset="city" />
         </Suspense>
         <ContactShadows position={[0, -3.9, 0]} scale={20} blur={1.5} far={5} />
-      <OrbitControls
+        <OrbitControls
           enablePan={true}
           enableZoom={true}
           minPolarAngle={Math.PI / 2.2}
