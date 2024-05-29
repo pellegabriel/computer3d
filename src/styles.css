@@ -51,7 +51,7 @@ body {
   content: "";
   margin: 0 -2px 0 0;
   flex: 1;
-  --c: no-repeat linear-gradient(#5900ff 0 0);
+  --c: no-repeat linear-gradient(#ea1345 0 0);
   background: var(--c), var(--c), var(--c), var(--c);
   animation: l13-1 1s infinite linear, l13-2 1s infinite linear;
 }
