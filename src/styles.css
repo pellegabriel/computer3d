@@ -17,12 +17,27 @@ main,
 body {
   font-family: inter;
   color: black;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 1) 25%,
-    rgba(72, 96, 203, 1) 100%
-  );
+  background: linear-gradient(-45deg, #000000, #2fad89, #4d6eff, #000000);
+  background-size: 500% 500%;
+  animation: gradient 15s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 .content {
