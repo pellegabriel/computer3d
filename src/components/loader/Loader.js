@@ -1,8 +1,15 @@
+// components/loader/Loader.js
 import React from 'react';
-import { Html } from '@react-three/drei'; // Asegúrate de importar Html desde el paquete correcto
+import { Html } from '@react-three/drei';
 
-export const Loader = () => (
+// Loader para usar dentro del Canvas
+export const Loader3D = () => (
   <Html center>
     <div className="loader"></div>
   </Html>
+);
+
+// Loader para usar fuera del Canvas
+export const Loader = () => (
+  <div className="loader"></div>
 );
