@@ -13,23 +13,24 @@ import CybrButtons from "./components/page/CybrButtons";
 import { Loader, Loader3D } from "./components/loader/Loader";
 import { Model } from "./components/page/Model";
 import { CameraScroll } from "./components/cameraScroll/CameraScroll";
-import { CyberInfoText } from './components/InfoText/CyberInfoText';
+import CyberInfoText from './components/InfoText/CyberInfoText';
 
-// Componentes de UI
 const NavigationButton = ({ onClick, disabled, position }) => (
   <button
     onClick={onClick}
     disabled={disabled}
     style={{
       position: 'absolute',
-      top: '50%',
-      [position]: '20px',
+      top: '35%',
+      [position]: '0px',
       transform: 'translateY(-50%)',
       padding: '10px',
       fontSize: '24px',
-      backgroundColor: 'rgba(255, 255, 255, 0.5)',
+      backgroundColor: 'rgba(255, 255, 255,)',
       border: 'none',
-      borderRadius: '5px',
+      borderRadius: position === 'left' 
+        ? '0 30px 30px 0' 
+        : '30px 0 0 30px',
       cursor: disabled ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       zIndex: 1001
@@ -43,13 +44,15 @@ export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isInfoVisible, setIsInfoVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [modelsLoaded, setModelsLoaded] = useState(false);
+
 
   const cameraPoints = [
     { 
-      position: new Vector3(10, 1, -13), 
-      lookAt: new Vector3(-15, 3, 10), 
+      position: new Vector3(0, 2.8, -20), 
+      lookAt: new Vector3(-2, 1, 30), 
       info: {
-        title: "Vista Principal del Apartamento",
+        title: "Computer Cv",
         description: "Espacio de trabajo cyberpunk",
         details: "Un ambiente futurista diseñado para la productividad.\nEquipado con tecnología de última generación y detalles neón.\nPerfecto para desarrolladores y creativos digitales."
       }
@@ -58,7 +61,7 @@ export default function App() {
       position: new Vector3(-10, 15, 20), 
       lookAt: new Vector3(0, 3, 300), 
       info: {
-        title: "Vista Aérea del Complejo",
+        title: "Description",
         description: "Perspectiva panorámica cyberpunk",
         details: "Observa la integración de luces LED y arquitectura moderna.\nSistemas de seguridad automatizados y drones de vigilancia.\nTerrazas con jardines verticales y paneles solares."
       }
@@ -67,30 +70,28 @@ export default function App() {
       position: new Vector3(50, 10, 0), 
       lookAt: new Vector3(0, 3, 400), 
       info: {
-        title: "Detalle de la Fachada",
+        title: "More about me",
         description: "Diseño arquitectónico futurista",
         details: "Pantallas holográficas integradas en las paredes.\nSistemas de iluminación adaptativos.\nMateriales inteligentes que responden al ambiente."
       }
     },
     { 
-      position: new Vector3(40, -5, -10), 
-      lookAt: new Vector3(-100, -20, 0), 
+      position: new Vector3(45, 0, -9), 
+      lookAt: new Vector3(-200, -20, -50), 
       info: {
-        title: "Vista del Jardín Trasero",
+        title: "Experience",
         description: "Área de descanso high-tech",
         details: "Vegetación sintética con iluminación biónica.\nSistema de clima controlado por IA.\nZona de recarga inalámbrica para dispositivos."
       }
     }
   ];
-  
-  // Solo usar el temporizador para el loader
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 5000); // Aumenté a 5 segundos para dar más tiempo de carga
 
-    return () => clearTimeout(timer);
-  }, []);
+  const handleModelsLoaded = () => {
+    setModelsLoaded(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  };
 
   const handleLeft = () => {
     setIsInfoVisible(false);
@@ -112,9 +113,9 @@ export default function App() {
 
   return (
     <div style={{
-      borderWidth: '5px', 
+      borderWidth: '15px', 
       height: '100vh', 
-      borderColor: '#DF0B55', 
+      borderColor: 'black', 
       position: 'relative'
     }}>
       {isLoading && (
@@ -134,35 +135,48 @@ export default function App() {
           <Scene 
             currentIndex={currentIndex} 
             cameraPoints={cameraPoints}
+            onLoaded={handleModelsLoaded}
           />
         </Suspense>
       </Canvas>
 
-      <NavigationButton 
-        onClick={handleLeft} 
-        disabled={currentIndex === cameraPoints.length - 1}
-        position="left"
-      />
-      <NavigationButton 
-        onClick={handleRight} 
-        disabled={currentIndex === 0}
-        position="right"
-      />
-      
-      <CyberInfoText 
-        title={cameraPoints[currentIndex].info.title}
-        description={cameraPoints[currentIndex].info.description}
-        details={cameraPoints[currentIndex].info.details}
-        isVisible={isInfoVisible}
-      />
-      
-      <CybrButtons/>
+      {!isLoading && (
+        <>
+          <NavigationButton 
+            onClick={handleLeft} 
+            disabled={currentIndex === cameraPoints.length - 1}
+            position="left"
+          />
+          <NavigationButton 
+            onClick={handleRight} 
+            disabled={currentIndex === 0}
+            position="right"
+          />
+          
+          <CyberInfoText 
+            title={cameraPoints[currentIndex].info.title}
+            description={cameraPoints[currentIndex].info.description}
+            details={cameraPoints[currentIndex].info.details}
+            isVisible={isInfoVisible}
+          />
+          
+          <CybrButtons/>
+        </>
+      )}
     </div>
   );
 }
 
-// Simplificado el componente Scene sin el onLoaded
-const Scene = ({ currentIndex, cameraPoints }) => {
+const Scene = ({ currentIndex, cameraPoints, onLoaded }) => {
+  useEffect(() => {
+    // Simular tiempo de carga de los modelos
+    const loadTimer = setTimeout(() => {
+      onLoaded();
+    }, 3000); // Ajusta este tiempo según lo que necesites
+
+    return () => clearTimeout(loadTimer);
+  }, [onLoaded]);
+
   return (
     <>
       <CameraScroll cameraPoints={cameraPoints} currentIndex={currentIndex}>

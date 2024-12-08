@@ -1,8 +1,7 @@
-// CyberInfoText.jsx
 import React, { useState, useEffect } from 'react';
-import './CyberInfoText.css';
+import '../../cyberpunk.css';
 
-export const CyberInfoText = ({ title, description, details, isVisible }) => {
+const CyberInfoText = ({ title, description, details, isVisible }) => {
   const [glitching, setGlitching] = useState(false);
 
   useEffect(() => {
@@ -15,22 +14,27 @@ export const CyberInfoText = ({ title, description, details, isVisible }) => {
 
   return (
     <div 
-      className={`cyber-info-container ${glitching ? 'glitching' : ''}`} 
-      style={{ opacity: isVisible ? 1 : 0 }}
-    >
-      <div className="cybr-text main">
-        {title}
-        <span aria-hidden>_</span>
-        <div aria-hidden className="cybr-text__glitch">{title}_</div>
+    className="cyber-info-container cyber-razor-top cyber-razor-bottom bg-black"
+    style={{ 
+      opacity: isVisible ? 1 : 0,
+      padding: '1rem',
+      zIndex: 1002,
+      '--bg-opacity': '0.4',
+      
+    }}
+  >
+      <div className="cyber-tile cyber-glitch-2" >
+        <h2 className="cyber-h cyberpunk-font" style={{ marginTop: '0px' }}>
+          {title}
+        </h2>
       </div>
-      <div className="cybr-text sub">
-        {description}
-        <div aria-hidden className="cybr-text__glitch">{description}</div>
-      </div>
-      <div className="cybr-text details">
-        {details}
-        <div aria-hidden className="cybr-text__glitch">{details}</div>
+      <div className="code-block bg-dark fg-white" data-title="DETAILS://" >
+        <div className="cyber-glitch-0">
+          {details}
+        </div>
       </div>
     </div>
   );
 };
+
+export default CyberInfoText;
