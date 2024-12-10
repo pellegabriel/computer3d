@@ -44,7 +44,7 @@ export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isInfoVisible, setIsInfoVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [modelsLoaded, setModelsLoaded] = useState(false);
+  const [, setModelsLoaded] = useState(false);
 
 
   const cameraPoints = [
