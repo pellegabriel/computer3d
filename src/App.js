@@ -3,7 +3,6 @@ import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, Environment, ContactShadows } from '@react-three/drei';
 import { Vector3 } from 'three';
 
-import { Can } from "./components/models/Can";
 import { Apartments } from "./components/models/Apartment";
 import { Revolver } from "./components/models/Revolver";
 import { Mask } from "./components/models/Mask";
@@ -185,7 +184,6 @@ const Scene = ({ currentIndex, cameraPoints, onLoaded }) => {
       
       <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
         <Model />
-        <Can />
         <GunBot/>
         <Apartments />
         <Revolver/>

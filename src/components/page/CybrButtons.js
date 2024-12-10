@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linkedin, Github, FileText } from 'lucide-react';
 import '../../cyberpunk.css';
 
 function CybrButtons() {
@@ -13,24 +14,43 @@ function CybrButtons() {
       bottom: '20px', // Distancia desde abajo
       left: '2%', // Centro horizontal
       zIndex: 1002,
-      width: '100%', // Asegura que tome el ancho completo
       maxWidth: '600px' // Limita el ancho máximo
       }}>
-      <a href="https://polvorin01.netlify.app/" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         style={{ position: 'relative', zIndex: 1002 }}>
-        <button className="cyber-button bg-cyan fg-black">
-          Go to Profile
+      <a 
+        href="https://www.linkedin.com/in/gabrielpelle/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative z-[1002]"
+      >
+        <button className="cyber-button bg-blue fg-white w-full flex items-center justify-center gap-2">
+          <Linkedin size={20} />
+          Go to LinkedIn
           <span className="glitchtext">ACCESSING</span>
           <span className="tag">P01</span>
         </button>
       </a>
 
-      <a href="/cv.pdf" 
-         download
-         style={{ position: 'relative', zIndex: 1002 }}>
-        <button className="cyber-button bg-red fg-white">
+      <a 
+        href="https://github.com/YourGithubUsername"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative z-[1002]"
+      >
+        <button className="cyber-button bg-purple fg-white w-full flex items-center justify-center gap-2">
+          <Github size={20} />
+          Go to GitHub
+          <span className="glitchtext">ACCESSING</span>
+          <span className="tag">P02</span>
+        </button>
+      </a>
+
+      <a 
+        href="/cv.pdf"
+        download
+        className="relative z-[1002]"
+      >
+        <button className="cyber-button bg-white fg-black w-full flex items-center justify-center gap-2">
+          <FileText size={20} />
           Download CV
           <span className="glitchtext">DOWNLOADING</span>
           <span className="tag">CV2</span>
