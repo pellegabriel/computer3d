@@ -36,7 +36,7 @@
 
     --yellow: #f8ef02;
     --cyan: #ffffff;
-    --red: #38b59e;
+    --red: #f59d03;
     --blue: #136377;
     --green: #446d44;
     --purple: purple;
@@ -196,7 +196,6 @@ body
 /*#region razor*/
 .cyber-razor-top
 {
-    margin-top: 30px;
     position: relative;
 }
 
@@ -656,7 +655,7 @@ code,
     color: var(--cyan);
     padding: .3rem .4rem .2rem .4rem;
     font-family: Oxanium !important;
-    font-size: .75rem;
+    font-size: .90rem;
 }
 
 .code-block

@@ -19,8 +19,7 @@ const CyberInfoText = ({ title, description, details, isVisible }) => {
       opacity: isVisible ? 1 : 0,
       padding: '1rem',
       zIndex: 1002,
-      '--bg-opacity': '0.4',
-      
+      '--bg-opacity': '0.4',      
     }}
   >
       <div className="cyber-tile cyber-glitch-2" >

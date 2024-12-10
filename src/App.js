@@ -21,12 +21,12 @@ const NavigationButton = ({ onClick, disabled, position }) => (
     disabled={disabled}
     style={{
       position: 'absolute',
-      top: '35%',
+      top: '41%',
       [position]: '0px',
       transform: 'translateY(-50%)',
-      padding: '10px',
-      fontSize: '24px',
-      backgroundColor: 'rgba(255, 255, 255,)',
+      padding: '5px',
+      fontSize: '20px',
+      backgroundColor: 'rgba(255, 255, 255,1)',
       border: 'none',
       borderRadius: position === 'left' 
         ? '0 30px 30px 0' 
@@ -52,9 +52,9 @@ export default function App() {
       position: new Vector3(0, 2.8, -20), 
       lookAt: new Vector3(-2, 1, 30), 
       info: {
-        title: "Computer Cv",
-        description: "Espacio de trabajo cyberpunk",
-        details: "Un ambiente futurista diseñado para la productividad.\nEquipado con tecnología de última generación y detalles neón.\nPerfecto para desarrolladores y creativos digitales."
+        title: "Computer CV",
+        description: "Next.js, React Native & SvelteKit Developer",
+        details: "Specialist in web and mobile development with Next.js and React Native.\nProficient in TypeScript and modern architectures.\nExperience creating intuitive interfaces with Tailwind and Material-UI.\nPassionate about technological innovation and user-centered design."
       }
     },
     { 
@@ -62,17 +62,17 @@ export default function App() {
       lookAt: new Vector3(0, 3, 300), 
       info: {
         title: "Description",
-        description: "Perspectiva panorámica cyberpunk",
-        details: "Observa la integración de luces LED y arquitectura moderna.\nSistemas de seguridad automatizados y drones de vigilancia.\nTerrazas con jardines verticales y paneles solares."
+        description: "Software Engineer from UNLP",
+        details: "Full Stack Developer with 4 years of experience.\nSpecialized in modern frontend technologies and UI/UX design.\nExperience in high-impact projects and enterprise systems.\nStrong knowledge of AWS and cloud architectures."
       }
     },
     { 
       position: new Vector3(50, 10, 0), 
       lookAt: new Vector3(0, 3, 400), 
       info: {
-        title: "More about me",
-        description: "Diseño arquitectónico futurista",
-        details: "Pantallas holográficas integradas en las paredes.\nSistemas de iluminación adaptativos.\nMateriales inteligentes que responden al ambiente."
+        title: "More About Me",
+        description: "Skills & Interests",
+        details: "Versatile developer with React, Next.js, and React Native.\nExperience in interface design with Figma.\nInterested in FinTech and microservices innovations.\nB2-C1 English level for international collaboration."
       }
     },
     { 
@@ -80,8 +80,8 @@ export default function App() {
       lookAt: new Vector3(-200, -20, -50), 
       info: {
         title: "Experience",
-        description: "Área de descanso high-tech",
-        details: "Vegetación sintética con iluminación biónica.\nSistema de clima controlado por IA.\nZona de recarga inalámbrica para dispositivos."
+        description: "Professional Journey",
+        details: "Full Stack Developer at Delsud - Chess application development with AWS and Next.js\nReact Native Developer at Teiki Company - Web and mobile applications development\nFront-end Developer at Coderhood - Medication delivery system and environmental PaaS\nFront-end Developer at Akronym - Svelte applications for equine registry and medical system"
       }
     }
   ];
