@@ -4,7 +4,7 @@ import './CyberInfoText.css';
 
 const CyberInfoText = ({ title, details, isVisible }) => {
   const [glitching, setGlitching] = useState(false);
-  const [ setTextVisible] = useState(false);
+  const [, setTextVisible] = useState(false);
   const [currentText, setCurrentText] = useState('');
 
   useEffect(() => {
