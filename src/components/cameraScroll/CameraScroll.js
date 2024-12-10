@@ -9,24 +9,32 @@ export const CameraScroll = ({ children, cameraPoints, currentIndex }) => {
   const startQuaternion = useRef(new Quaternion());
   const endPosition = useRef(new Vector3());
   const endQuaternion = useRef(new Quaternion());
+  
+  // Memoize camera update function
+  const updateCamera = useRef((start, end, cam) => {
+    startPosition.current.copy(cam.position);
+    startQuaternion.current.copy(cam.quaternion);
+
+    endPosition.current.copy(end.position);
+    cam.position.copy(start.position);
+    cam.lookAt(start.lookAt);
+    endQuaternion.current.copy(cam.quaternion);
+
+    cam.position.copy(startPosition.current);
+    cam.quaternion.copy(startQuaternion.current);
+  });
 
   useEffect(() => {
     const start = cameraPoints[currentIndex];
-    const end = cameraPoints[currentIndex]; // Changed this line
-
-    startPosition.current.copy(camera.position);
-    startQuaternion.current.copy(camera.quaternion);
-
-    endPosition.current.copy(end.position);
-    camera.position.copy(start.position);
-    camera.lookAt(start.lookAt);
-    endQuaternion.current.copy(camera.quaternion);
-
-    camera.position.copy(startPosition.current);
-    camera.quaternion.copy(startQuaternion.current);
-
-    transitionRef.current = { inProgress: true, startTime: Date.now(), duration: 1000 };
-  }, [currentIndex, cameraPoints]);
+    const end = cameraPoints[currentIndex];
+    
+    updateCamera.current(start, end, camera);
+    transitionRef.current = { 
+      inProgress: true, 
+      startTime: Date.now(), 
+      duration: 1000 
+    };
+  }, [currentIndex, cameraPoints, camera]);
 
   useFrame(() => {
     if (transitionRef.current.inProgress) {
@@ -37,8 +45,16 @@ export const CameraScroll = ({ children, cameraPoints, currentIndex }) => {
       if (progress < 1) {
         const easedProgress = easeInOutCubic(progress);
 
-        camera.position.lerpVectors(startPosition.current, endPosition.current, easedProgress);
-        camera.quaternion.slerpQuaternions(startQuaternion.current, endQuaternion.current, easedProgress);
+        camera.position.lerpVectors(
+          startPosition.current, 
+          endPosition.current, 
+          easedProgress
+        );
+        camera.quaternion.slerpQuaternions(
+          startQuaternion.current, 
+          endQuaternion.current, 
+          easedProgress
+        );
       } else {
         camera.position.copy(endPosition.current);
         camera.quaternion.copy(endQuaternion.current);
