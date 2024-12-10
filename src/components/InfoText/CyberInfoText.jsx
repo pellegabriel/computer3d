@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../../cyberpunk.css';
 import './CyberInfoText.css';
 
-const CyberInfoText = ({ title, description, details, isVisible }) => {
+const CyberInfoText = ({ title, details, isVisible }) => {
   const [glitching, setGlitching] = useState(false);
-  const [textVisible, setTextVisible] = useState(false);
+  const [ setTextVisible] = useState(false);
   const [currentText, setCurrentText] = useState('');
 
   useEffect(() => {
