@@ -1,0 +1,15 @@
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cyber-cursor {
+  animation: cursorBlink 1s infinite;
+  color: rgb(255, 255, 255);
+}
+
+.cyber-text {
+  font-family: monospace;
+  color: rgb(179, 255, 255);
+  text-shadow: 0 0 5px rgba(255, 196, 0, 0.5);
+}
