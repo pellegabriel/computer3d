@@ -90,9 +90,7 @@ return (
         }}
       >
         <span 
-          className="cyber-glitch-2" 
           style={{ 
-            transform: 'rotate(90deg)',
             fontSize: '1.2rem'
           }}
         >
