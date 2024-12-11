@@ -5,7 +5,6 @@ import { Vector3 } from 'three';
 
 import { Apartments } from "./components/models/Apartment";
 import { Revolver } from "./components/models/Revolver";
-import { Mask } from "./components/models/Mask";
 import { Katana } from "./components/models/Katana";
 import { GunBot } from "./components/models/Gun-bot";
 import CybrButtons from "./components/page/CybrButtons";
@@ -25,19 +24,34 @@ const NavigationButton = ({ onClick, disabled, position }) => (
       transform: 'translateY(-50%)',
       padding: '5px',
       fontSize: '20px',
-      backgroundColor: 'rgba(255, 255, 255,1)',
-      border: 'none',
-      borderRadius: position === 'left' 
-        ? '0 30px 30px 0' 
-        : '30px 0 0 30px',
+      backgroundColor: 'rgba(255, 255, 255, 1)', // Blanco opaco inicial
       cursor: disabled ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.5 : 1,
-      zIndex: 1001
+      zIndex: 1001,
+      width: '35px',
+      height: '100px',
+      border: '0.5px #ffffff', // Borde verde brillante
+      transition: 'all 0.3s ease', // Transiciones suaves para hover y focus
+      boxShadow: disabled
+        ? 'none'
+        : '0 0 10px rgba(0, 255, 0, 0.3)', // Efecto de brillo si está habilitado
+    }}
+    onMouseEnter={(e) => {
+      if (!disabled) {
+        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.5)'; // Verde translúcido en hover
+      }
+    }}
+    onMouseLeave={(e) => {
+      e.target.style.backgroundColor = 'rgba(255, 255, 255, 1)'; // Vuelve al blanco
+    }}
+    onBlur={(e) => {
+      e.target.style.borderColor = '#ffffff'; // Regresa al borde verde
     }}
   >
     {position === 'left' ? '←' : '→'}
   </button>
 );
+
 
 export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,45 +59,45 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [, setModelsLoaded] = useState(false);
 
-
   const cameraPoints = [
     { 
-      position: new Vector3(0, 2.8, -20), 
-      lookAt: new Vector3(-2, 1, 30), 
-      info: {
-        title: "Computer CV",
-        description: "Next.js, React Native & SvelteKit Developer",
-        details: "Specialist in web and mobile development with Next.js and React Native.\nProficient in TypeScript and modern architectures.\nExperience creating intuitive interfaces with Tailwind and Material-UI.\nPassionate about technological innovation and user-centered design."
-      }
-    },
-    { 
-      position: new Vector3(-10, 15, 20), 
-      lookAt: new Vector3(0, 3, 300), 
-      info: {
-        title: "Description",
-        description: "Software Engineer from UNLP",
-        details: "Full Stack Developer with 4 years of experience.\nSpecialized in modern frontend technologies and UI/UX design.\nExperience in high-impact projects and enterprise systems.\nStrong knowledge of AWS and cloud architectures."
-      }
-    },
-    { 
-      position: new Vector3(50, 10, 0), 
-      lookAt: new Vector3(0, 3, 400), 
-      info: {
-        title: "More About Me",
-        description: "Skills & Interests",
-        details: "Versatile developer with React, Next.js, and React Native.\nExperience in interface design with Figma.\nInterested in FinTech and microservices innovations.\nB2-C1 English level for international collaboration."
-      }
-    },
-    { 
-      position: new Vector3(45, 0, -9), 
-      lookAt: new Vector3(-200, -20, -50), 
+      position: new Vector3(0, 2.8, -13), 
+      lookAt: new Vector3(-2, -10, 30), 
       info: {
         title: "Experience",
         description: "Professional Journey",
-        details: "Full Stack Developer at Delsud - Chess application development with AWS and Next.js\nReact Native Developer at Teiki Company - Web and mobile applications development\nFront-end Developer at Coderhood - Medication delivery system and environmental PaaS\nFront-end Developer at Akronym - Svelte applications for equine registry and medical system"
+        details: "Front-end Developer at Akronym - Created sleek and efficient apps using Svelte for equine systems.\nFront-end Developer at Delsud - Built a chess app with Next.js and AWS.\nReact Native Developer at Teiki Company - Worked on web and mobile apps with great design and functionality.\nFront-end Developer at Coderhood - Delivered impactful systems, like a medication delivery app."
+      }
+    },
+    { 
+      position: new Vector3(-10, 3, 20), 
+      lookAt: new Vector3(0, 50, 300), 
+      info: {
+        title: "Description",
+        description: "What I Bring",
+        details: "I love creating apps that people enjoy using. From clean designs to solid functionality, I aim to make tech easy and accessible.\nI'm always curious and looking to improve my skills, especially in design and development."
+      }
+    },
+    { 
+      position: new Vector3(30, 10, 2), 
+      lookAt: new Vector3(-10, 3, 400), 
+      info: {
+        title: "Tech & Tools",
+        description: "What I Work With",
+        details: "React, Next.js, Svelte, React Native.\nUI design with Figma, Tailwind, and Material-UI.\nExperience with TypeScript, Zustand, AWS, and modern architectures."
+      }
+    },
+    { 
+      position: new Vector3(45, -5, -3), 
+      lookAt: new Vector3(-300, -20, -50),
+      info: {
+        title: "More About Me",
+        description: "Skills & Interests",
+        details: "I enjoy designing intuitive interfaces and crafting great user experiences.\nBig fan of FinTech and microservices innovation.\nAlways open to learning and collaborating with diverse teams."
       }
     }
   ];
+  
 
   const handleModelsLoaded = () => {
     setModelsLoaded(true);
@@ -111,7 +125,8 @@ export default function App() {
   };
 
   return (
-    <div style={{
+    <div          className="cyber-glitch-1"
+    style={{
       borderWidth: '15px', 
       height: '100vh', 
       borderColor: 'black', 
@@ -141,6 +156,8 @@ export default function App() {
 
       {!isLoading && (
         <>
+                  <CybrButtons/>
+
           <NavigationButton 
             onClick={handleLeft} 
             disabled={currentIndex === cameraPoints.length - 1}
@@ -159,7 +176,6 @@ export default function App() {
             isVisible={isInfoVisible}
           />
           
-          <CybrButtons/>
         </>
       )}
     </div>
@@ -182,12 +198,11 @@ const Scene = ({ currentIndex, cameraPoints, onLoaded }) => {
         <PerspectiveCamera makeDefault position={[0, 10, -10]} fov={55} />
       </CameraScroll>
       
-      <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]}>
+      <group rotation={[0, Math.PI, 0]} position={[0, 0, 0]} style={{indexz: 1000}}>
         <Model />
         <GunBot/>
         <Apartments />
         <Revolver/>
-        <Mask/>
         <Katana/>
       </group>
       <Environment preset="city" />

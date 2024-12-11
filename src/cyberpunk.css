@@ -34,8 +34,8 @@
 {
     --root-font-size: 18px;
 
-    --yellow: #f8ef02;
-    --cyan: #fcff66;
+    --yellow: #f8f002bb;
+    --cyan: #74fdff;
     --red: #f59d03;
     --blue: #1A237E;
     --green: #446d44;
@@ -248,7 +248,7 @@ body
 .cyber-button-big
 {
     --button-border: 4px;
-    --button-font-size: 1rem;
+    --button-font-size: 0.67rem;
     --button-padding-v: 0.3rem;
     --button-padding-h: 2.5rem;
 
