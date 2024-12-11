@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 export default function Page() {
   const urls = [
-   " https://polvorin01.netlify.app/",
-    "https://www.teiki.com.ar/" ,
+    "https://polvorin01.netlify.app/",
+    "https://www.teiki.com.ar/",
     "https://dchess.net/",
     "https://www.akronym.cr/"
   ];
@@ -53,8 +53,8 @@ export default function Page() {
       style={{
         position: 'absolute',
         bottom: '10px',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        left: '60px', // Cambiado de 50% a 60px para posicionarlo a la izquierda
+        transform: 'none', // Eliminado translateX ya que no necesitamos centrar
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         padding: '5px 15px',
         borderRadius: '15px',
@@ -70,16 +70,16 @@ export default function Page() {
 
   return (
     <div style={{ 
-      width: "calc(100% + 100px)", // Aumentamos el ancho para los botones
+      width: "calc(100% + 100px)",
       height: "100%",
       position: "relative",
-      left: "-50px", // Compensamos el ancho extra
+      left: "-50px",
       overflow: "visible"
     }}>
       <div style={{ 
-        width: "calc(100% - 100px)", // El ancho real del contenido
+        width: "calc(100% - 100px)",
         height: "100%",
-        margin: "0 50px", // Centrado con espacio para los botones
+        margin: "0 50px",
         position: "relative"
       }}>
         <iframe

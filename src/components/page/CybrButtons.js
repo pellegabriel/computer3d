@@ -111,8 +111,7 @@ style={{
             setIsExpanded(true);
           }}
         >
-          <span 
-            className="cyber-glitch-2" 
+          <span  
             style={{ 
               fontSize: '0.8rem'
             }}
