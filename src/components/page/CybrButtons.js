@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Linkedin, Github, FileText, MenuIcon } from 'lucide-react';
+import { Linkedin, Github, FileText } from 'lucide-react';
 import '../../cyberpunk.css';
 
 const CybrButtons = () => {
