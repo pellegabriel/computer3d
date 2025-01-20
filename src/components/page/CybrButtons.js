@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Linkedin, Github, FileText } from 'lucide-react';
 import '../../cyberpunk.css';
 
-const CybrButtons = () => {
+const CybrButtons = memo(() => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -122,6 +122,6 @@ style={{
       </div>
     </>
   );
-};
+});
 
 export default CybrButtons;

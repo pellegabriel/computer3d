@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 export default function Page() {
   const urls = [
@@ -10,7 +10,7 @@ export default function Page() {
 
   const [currentUrlIndex, setCurrentUrlIndex] = useState(0);
 
-  const NavigationButton = ({ direction, onClick, disabled }) => (
+  const NavigationButton = memo(({ direction, onClick, disabled }) => (
     <button
       onClick={onClick}
       disabled={disabled}
@@ -46,7 +46,7 @@ export default function Page() {
     >
       {direction === 'left' ? '←' : '→'}
     </button>
-  );
+  ));
 
   const UrlIndicator = () => (
     <div

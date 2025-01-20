@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, memo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, Environment, ContactShadows } from '@react-three/drei';
 import { Vector3 } from 'three';
@@ -13,7 +13,7 @@ import { Model } from "./components/page/Model";
 import { CameraScroll } from "./components/cameraScroll/CameraScroll";
 import CyberInfoText from './components/InfoText/CyberInfoText';
 
-const NavigationButton = ({ onClick, disabled, position }) => (
+const NavigationButton = memo(({ onClick, disabled, position }) => (
   <button
     onClick={onClick}
     disabled={disabled}
@@ -24,34 +24,33 @@ const NavigationButton = ({ onClick, disabled, position }) => (
       transform: 'translateY(-50%)',
       padding: '5px',
       fontSize: '20px',
-      backgroundColor: 'rgba(255, 255, 255, 1)', // Blanco opaco inicial
+      backgroundColor: 'rgba(255, 255, 255, 1)', 
       cursor: disabled ? 'not-allowed' : 'pointer',
       opacity: disabled ? 0.5 : 1,
       zIndex: 1001,
       width: '35px',
       height: '100px',
-      border: '0.5px #ffffff', // Borde verde brillante
-      transition: 'all 0.3s ease', // Transiciones suaves para hover y focus
+      border: '0.5px #ffffff',
+      transition: 'all 0.3s ease',
       boxShadow: disabled
         ? 'none'
-        : '0 0 10px rgba(0, 255, 0, 0.3)', // Efecto de brillo si está habilitado
+        : '0 0 10px rgba(0, 255, 0, 0.3)',
     }}
     onMouseEnter={(e) => {
       if (!disabled) {
-        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.5)'; // Verde translúcido en hover
+        e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
       }
     }}
     onMouseLeave={(e) => {
-      e.target.style.backgroundColor = 'rgba(255, 255, 255, 1)'; // Vuelve al blanco
+      e.target.style.backgroundColor = 'rgba(255, 255, 255, 1)';
     }}
     onBlur={(e) => {
-      e.target.style.borderColor = '#ffffff'; // Regresa al borde verde
+      e.target.style.borderColor = '#ffffff';
     }}
   >
     {position === 'left' ? '←' : '→'}
   </button>
-);
-
+));
 
 export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
